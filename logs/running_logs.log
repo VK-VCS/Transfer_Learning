@@ -1,0 +1,32 @@
+[2022-10-16 22:02:02,762: INFO: 01_base_model]: 
+********************
+[2022-10-16 22:02:02,762: INFO: 01_base_model]: >>>>> stage base model creation started <<<<<
+[2022-10-16 22:02:02,762: INFO: common]: yaml file: configs/project_config.yaml loaded successfully
+[2022-10-16 22:02:03,354: INFO: 01_base_model]: bin_scratch_model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inputlayer (Flatten)        (None, 784)               0         
+                                                                 
+ hiddenlayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ hiddenlayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ outputlayer (Dense)         (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 266,610
+Trainable params: 266,610
+Non-trainable params: 0
+_________________________________________________________________
+
+[2022-10-16 22:02:46,689: INFO: common]: created directory at: artifacts\models
+[2022-10-16 22:02:46,821: INFO: 01_base_model]: base model is saved at artifacts\models\base_model.h5
+[2022-10-16 22:02:47,482: INFO: 01_base_model]: evaluation metrics [0.31467577815055847, 0.9117000102996826]
+[2022-10-16 22:02:47,523: INFO: 01_base_model]: >>>>> stage base model creation completed!<<<<<
+
