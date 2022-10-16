@@ -12,3 +12,6 @@ Utilize the number recognition model and further train the model for odd or even
 
 #### Note:
 Stage 1 is being created for demo purposes only, in the current problem statement we only refer to stage 2 as transfer learning part.
+
+
+Repository used for copying template:  <b> Python-Project-Template1 </b>
