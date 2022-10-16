@@ -2,10 +2,9 @@
 
 ## Problem statement
 To predict whether a handwritten digit is -
-\begin{enumerate}
-\item odd or even from the keras mnist dataset
-\item greater or less than 5
-\end{enumerate}
+   1. odd or even from the keras mnist dataset
+   2. greater or less than 5
+
 ### Stage 1:
 Create a ANN model to recognize the handwritten digits
 
