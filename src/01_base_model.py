@@ -20,21 +20,21 @@ logging.basicConfig(
 
 
 def main(config_path):
-    ## read config files
+    # read config files
     config = read_yaml(config_path)
-    ## get the data
+    # get the data
     (X_train_full, y_train_full), (X_test, y_test) = tf.keras.datasets.mnist.load_data()
     X_train_full = X_train_full / 255.0
     X_test = X_test / 255.0
     X_valid, X_train = X_train_full[:5000], X_train_full[5000:]
     y_valid, y_train = y_train_full[:5000], y_train_full[5000:]
 
-    ## set the seeds
-    seed = 2021 ## get it from config
+    # set the seeds
+    seed = 2021 # get it from config
     tf.random.set_seed(seed)
     np.random.seed(seed)
 
-    ## Define the layers
+    # Define the layers
     Layers=[
         tf.keras.layers.Flatten(input_shape=[28,28], name="inputlayer"),
         tf.keras.layers.Dense(300,name="hiddenlayer1"),
@@ -44,7 +44,7 @@ def main(config_path):
         tf.keras.layers.Dense(10,activation ="softmax", name="outputlayer")
     ]
 
-    ## Define the model and compile it
+    # Define the model and compile it
     model = tf.keras.models.Sequential(Layers)
 
     LOSS = "sparse_categorical_crossentropy"
@@ -53,6 +53,24 @@ def main(config_path):
     model.compile(optimizer=OPTIMIZER, loss=LOSS,metrics=METRICS)
 
     model.summary()
+
+    # Train the model
+    history = model.fit(
+        X_train, y_train,
+        epochs=10,
+        validation_data=(X_valid, y_valid),
+        verbose=2
+    )
+
+    # save the model
+    model_dir_path = os.path.join("artifacts", "models")
+    create_directories([model_dir_path])
+
+    model_file_path = os.path.join(model_dir_path, "base_model.h5")
+    model.save(model_file_path)
+
+    logging.info(f"base model is saved at {model_file_path}")
+    logging.info(f"evaluation metrics {model.evaluate(X_test, y_test)}")
 
 
 if __name__ == '__main__':
