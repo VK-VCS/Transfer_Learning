@@ -30,3 +30,68 @@ _________________________________________________________________
 [2022-10-16 22:02:47,482: INFO: 01_base_model]: evaluation metrics [0.31467577815055847, 0.9117000102996826]
 [2022-10-16 22:02:47,523: INFO: 01_base_model]: >>>>> stage base model creation completed!<<<<<
 
+[2022-10-16 22:53:44,454: INFO: 02_transfer_learning]: 
+********************
+[2022-10-16 22:53:44,488: INFO: 02_transfer_learning]: >>>>> stage Transfer learning started <<<<<
+[2022-10-16 22:53:44,488: INFO: common]: yaml file: configs/project_config.yaml loaded successfully
+[2022-10-16 22:53:44,918: ERROR: 02_transfer_learning]: module 'keras.api._v2.keras' has no attribute 'model'
+Traceback (most recent call last):
+  File "src/02_transfer_learning.py", line 105, in <module>
+    main(config_path=parsed_args.config)
+  File "src/02_transfer_learning.py", line 53, in main
+    base_model = tf.keras.model.load(base_model_path)
+AttributeError: module 'keras.api._v2.keras' has no attribute 'model'
+[2022-10-16 22:54:59,264: INFO: 02_transfer_learning]: 
+********************
+[2022-10-16 22:54:59,264: INFO: 02_transfer_learning]: >>>>> stage Transfer learning started <<<<<
+[2022-10-16 22:54:59,264: INFO: common]: yaml file: configs/project_config.yaml loaded successfully
+[2022-10-16 22:55:00,159: INFO: 02_transfer_learning]: loaded base model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inputlayer (Flatten)        (None, 784)               0         
+                                                                 
+ hiddenlayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ hiddenlayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ outputlayer (Dense)         (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 266,610
+Trainable params: 266,610
+Non-trainable params: 0
+_________________________________________________________________
+
+[2022-10-16 22:55:00,208: INFO: 02_transfer_learning]: Transfer learning model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ inputlayer (Flatten)        (None, 784)               0         
+                                                                 
+ hiddenlayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ hiddenlayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ output_layer (Dense)        (None, 2)                 202       
+                                                                 
+=================================================================
+Total params: 265,802
+Trainable params: 202
+Non-trainable params: 265,600
+_________________________________________________________________
+
+[2022-10-16 22:55:42,351: INFO: 02_transfer_learning]: base model is saved at artifacts\models\even_odd_model.h5
+[2022-10-16 22:55:43,073: INFO: 02_transfer_learning]: evaluation metrics [0.2924097776412964, 0.8801000118255615]
+[2022-10-16 22:55:43,113: INFO: 02_transfer_learning]: >>>>> stage Transfer learning completed!<<<<<
+
