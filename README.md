@@ -3,8 +3,8 @@
 ## Problem statement
 To Predict whether a handwritten digit is -
 \begin
-    \item odd or even from the keras mnist dataset
-    \item greater or less than 5
+\item odd or even from the keras mnist dataset
+item greater or less than 5
 \end
 ### Stage 1:
 Create a ANN model to recognize the handwritten digits
